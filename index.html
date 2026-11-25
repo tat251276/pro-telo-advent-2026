@@ -1,0 +1,123 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#123c32">
+<title>Про Тело — 24 дня заботы о себе</title>
+<style>
+:root{--green:#123c32;--green2:#1c5b49;--gold:#d8b66b;--cream:#fff8e8;--ink:#17382f}
+*{box-sizing:border-box}
+body{margin:0;min-height:100vh;color:var(--cream);font-family:Georgia,"Times New Roman",serif;background:radial-gradient(ellipse at 50% 0%,#34715b 0,#153e34 48%,#09271f 100%);overflow-x:hidden}
+body:before{content:"";position:fixed;inset:0;pointer-events:none;opacity:.22;background-image:radial-gradient(#f7e6b7 1px,transparent 1px);background-size:34px 34px}
+main{position:relative;max-width:760px;margin:auto;padding:26px 16px 50px;text-align:center}
+.brand{letter-spacing:.22em;text-transform:uppercase;font:600 12px Arial,sans-serif;color:#e8d39b}
+h1{font-size:clamp(29px,7vw,48px);line-height:1.06;margin:14px 0 9px;color:#f9e9c2;font-weight:normal}
+.subtitle{font:14px/1.5 Arial,sans-serif;color:#e8e1cc;margin:0 auto 22px;max-width:470px}
+.tree{position:relative;max-width:580px;margin:0 auto;padding:10px 10px 22px}
+.tree:before{content:"";position:absolute;z-index:-1;left:50%;top:22px;transform:translateX(-50%);width:min(92%,520px);height:92%;background:linear-gradient(135deg,#1c624d,#0e4437 65%,#092d25);clip-path:polygon(50% 0,62% 19%,57% 19%,75% 42%,67% 42%,91% 70%,61% 70%,61% 100%,39% 100%,39% 70%,9% 70%,33% 42%,25% 42%,43% 19%,38% 19%);filter:drop-shadow(0 8px 16px #061c18)}
+.star{font-size:38px;color:#f6d98e;text-shadow:0 0 18px #f5d98a;margin-bottom:2px}
+.rows{display:flex;flex-direction:column;align-items:center;gap:8px}
+.ornament-row{display:flex;justify-content:center;gap:clamp(7px,2vw,15px);width:100%}
+.ornament{position:relative;width:clamp(48px,11vw,70px);height:clamp(48px,11vw,70px);border:2px solid #d7b86f;border-radius:50%;background:radial-gradient(circle at 32% 25%,#6db08a 0,#247457 32%,#0d4938 72%);box-shadow:inset -5px -7px 12px #06271e, inset 3px 3px 8px #a8d2a2,0 5px 10px #061c18;display:flex;align-items:center;justify-content:center;color:#fff4d2;font:700 clamp(16px,4vw,22px) Arial,sans-serif;text-shadow:0 2px 4px #05261d;cursor:pointer;transition:transform .18s,filter .18s}
+.ornament:before{content:"";position:absolute;width:14px;height:8px;border:2px solid #d9bb73;border-bottom:0;border-radius:5px 5px 0 0;top:-10px;left:50%;transform:translateX(-50%)}
+.ornament:after{content:"";position:absolute;width:8px;height:5px;background:linear-gradient(#f3dfa7,#b88c3e);top:-4px;left:50%;transform:translateX(-50%);border-radius:2px}
+.ornament:hover{transform:translateY(-3px) scale(1.04);filter:brightness(1.12)}
+.ornament:focus-visible{outline:3px solid white;outline-offset:4px}
+.ornament.locked{filter:saturate(.45) brightness(.72);cursor:not-allowed}
+.ornament.opened{background:radial-gradient(circle at 30% 25%,#fff0bd 0,#e4c36f 42%,#a8792c 100%);color:#4a3210;text-shadow:none;border-color:#ffebae;box-shadow:inset -5px -7px 12px #916321,inset 3px 3px 8px #fff8d9,0 5px 10px #061c18}
+.note{font:12px/1.5 Arial,sans-serif;color:#d8e5d9;margin:14px auto 0;max-width:500px}
+.footer{margin-top:24px;font:12px Arial,sans-serif;letter-spacing:.08em;color:#d8c99f}
+.modal{position:fixed;inset:0;z-index:5;background:#031b16d9;display:none;align-items:center;justify-content:center;padding:18px}
+.modal.show{display:flex}
+.dialog{width:min(100%,440px);background:linear-gradient(145deg,#fff8e8,#e9d9b4);color:#234237;border:2px solid #d3ad5d;border-radius:22px;padding:26px 22px;box-shadow:0 18px 55px #0009;position:relative}
+.dialog .day{font:700 12px Arial,sans-serif;letter-spacing:.15em;color:#8b6828;text-transform:uppercase}
+.dialog h2{font-size:27px;font-weight:normal;margin:10px 0}
+.dialog p{font:15px/1.6 Arial,sans-serif;margin:0;white-space:pre-line}
+.close{position:absolute;right:12px;top:10px;border:0;background:transparent;font-size:28px;color:#426356;cursor:pointer}
+@media(max-width:390px){main{padding-left:8px;padding-right:8px}.ornament-row{gap:6px}.ornament{width:46px;height:46px}}
+</style>
+</head>
+<body>
+<main>
+  <div class="brand">Про Тело</div>
+  <h1>24 дня заботы о себе</h1>
+  <p class="subtitle">Новогодний адвент-календарь. Каждый день — новая игрушка, маленький повод уделить время себе и приятный сюрприз.</p>
+  <section class="tree" aria-label="Адвент-календарь на ёлке">
+    <div class="star" aria-hidden="true">✦</div>
+    <div class="rows" id="ornaments"></div>
+  </section>
+  <p class="note">Новая игрушка открывается каждый день с 1 по 24 декабря. Уже открытые сюрпризы остаются доступными.</p>
+  <div class="footer">МАССАЖ · SPA · ЗАБОТА О СЕБЕ</div>
+</main>
+<div class="modal" id="modal" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
+  <div class="dialog">
+    <button class="close" id="close" aria-label="Закрыть">×</button>
+    <div class="day" id="modalDay"></div>
+    <h2 id="modalTitle"></h2>
+    <p id="modalText"></p>
+  </div>
+</div>
+<script>
+const surprises = [
+ ["Добро пожаловать!","Начинаем наш декабрь заботы о себе. Сегодня просто выделите 10 минут для отдыха: отложите телефон, удобно устройтесь и спокойно подышите."],
+ ["Пауза для шеи","Мягко опустите плечи, сделайте несколько спокойных поворотов головы в комфортной амплитуде. Не выполняйте движения через боль."],
+ ["Время для воды","Сегодня напомните себе пить воду в течение дня. Маленькие привычки тоже помогают заботиться о себе."],
+ ["Минутка для стоп","Снимите обувь, мягко разомните стопы руками или покатайте подошвой небольшой мячик без сильного давления."],
+ ["Секрет расслабления","Попробуйте дыхание: спокойный вдох, затем чуть более длинный выдох. Повторите несколько раз без задержки дыхания."],
+ ["Забота о спине","Если долго сидите, встаньте, пройдитесь и мягко потянитесь. Меняйте положение тела в течение рабочего дня."],
+ ["Маленький ритуал","Выберите сегодня приятный домашний уход: тёплый душ, крем для тела и несколько минут только для себя."],
+ ["Плечи отдыхают","Поднимите плечи к ушам, затем мягко отпустите вниз. Повторите 5 раз, не торопясь."],
+ ["Вопрос дня","Какая зона тела чаще всего устаёт у вас в течение дня? Прислушайтесь к себе и не игнорируйте дискомфорт."],
+ ["Тёплая забота","Устройте себе вечер без спешки. Комфортная температура, спокойная музыка и отдых — тоже важная часть ухода."],
+ ["Разомнёмся","Сделайте небольшую прогулку в удобном темпе. Движение должно приносить комфорт, а не усиливать боль."],
+ ["Подарок себе","Подумайте, какой способ заботы о себе вы давно откладывали. Возможно, сегодня самое время запланировать его."],
+ ["Уход за руками","Нанесите крем на руки и уделите внимание каждому пальцу лёгкими массажными движениями."],
+ ["Проверка осанки","Поставьте стопы на пол, расслабьте плечи и устройтесь удобно. Не нужно удерживать спину напряжённо."],
+ ["Минутка тишины","Закройте глаза на минуту, расслабьте челюсть и плечи. Позвольте себе небольшую передышку."],
+ ["Забота о лице","Нанесите привычное увлажняющее средство мягкими движениями, не растягивая кожу."],
+ ["Потянитесь","Потянитесь вверх, насколько комфортно, затем опустите руки и расслабьтесь. Повторите несколько раз."],
+ ["Тёплый вечер","Сегодня выберите спокойный вечерний ритуал восстановления: отдых, любимая музыка или книга."],
+ ["Слушайте тело","Усталость — повод сделать паузу. Не сравнивайте свои ощущения с чужими и выбирайте комфортный темп."],
+ ["Маленькая радость","Вспомните три вещи, за которые вы благодарны себе сегодня. Забота начинается с внимания к себе."],
+ ["Подарок и внимание","Сегодня день приятных сюрпризов. Следите за сообщениями от «Про Тело» — здесь может появиться специальный подарок."],
+ ["День восстановления","Постарайтесь сегодня лечь спать вовремя и дать себе возможность полноценно отдохнуть."],
+ ["Почти праздник","Вы уже прошли большую часть нашего календаря. Поблагодарите себя за то, что находили время для заботы."],
+ ["Главный сюрприз","Сегодня финал нашего адвент-календаря! Спасибо, что были с «Про Тело». Следите за объявлением главного приза в канале."]
+];
+const rows = [2,4,5,6,7];
+const container = document.getElementById("ornaments");
+let n=1;
+rows.forEach(count=>{
+ const row=document.createElement("div"); row.className="ornament-row";
+ for(let i=0;i<count;i++,n++){
+  const b=document.createElement("button"); b.className="ornament"; b.type="button"; b.textContent=n;
+  b.setAttribute("aria-label","Игрушка "+n);
+  b.addEventListener("click",()=>openDoor(n));
+  row.appendChild(b);
+ }
+ container.appendChild(row);
+});
+function moscowDate(){
+ const parts=new Intl.DateTimeFormat("en-CA",{timeZone:"Europe/Moscow",year:"numeric",month:"2-digit",day:"2-digit"}).formatToParts(new Date());
+ const v={}; parts.forEach(p=>v[p.type]=p.value);
+ return `${v.year}-${v.month}-${v.day}`;
+}
+function openDoor(day){
+ const now=moscowDate();
+ const unlock=`2026-12-${String(day).padStart(2,"0")}`;
+ if(now<unlock){
+  alert(`Эта игрушка откроется ${day} декабря. Возвращайтесь за сюрпризом!`);
+  return;
+ }
+ document.getElementById("modalDay").textContent=`День ${day} · декабрь`;
+ document.getElementById("modalTitle").textContent=surprises[day-1][0];
+ document.getElementById("modalText").textContent=surprises[day-1][1];
+ document.getElementById("modal").classList.add("show");
+}
+document.getElementById("close").addEventListener("click",()=>document.getElementById("modal").classList.remove("show"));
+document.getElementById("modal").addEventListener("click",e=>{if(e.target.id==="modal")e.currentTarget.classList.remove("show")});
+document.addEventListener("keydown",e=>{if(e.key==="Escape")document.getElementById("modal").classList.remove("show")});
+</script>
+</body>
+</html>
