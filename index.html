@@ -25,7 +25,7 @@ h1{font-size:clamp(29px,7vw,48px);line-height:1.06;margin:14px 0 9px;color:#f9e9
 .ornament:after{content:"";position:absolute;width:8px;height:5px;background:linear-gradient(#f3dfa7,#b88c3e);top:-4px;left:50%;transform:translateX(-50%);border-radius:2px}
 .ornament:hover{transform:translateY(-3px) scale(1.04);filter:brightness(1.12)}
 .ornament:focus-visible{outline:3px solid white;outline-offset:4px}
-.ornament.locked{filter:saturate(.45) brightness(.72);cursor:not-allowed}
+.ornament.locked{filter:saturate(.45) brightness(.72);cursor:pointer;touch-action:manipulation}
 .ornament.opened{background:radial-gradient(circle at 30% 25%,#fff0bd 0,#e4c36f 42%,#a8792c 100%);color:#4a3210;text-shadow:none;border-color:#ffebae;box-shadow:inset -5px -7px 12px #916321,inset 3px 3px 8px #fff8d9,0 5px 10px #061c18}
 .note{font:12px/1.5 Arial,sans-serif;color:#d8e5d9;margin:14px auto 0;max-width:500px}
 .footer{margin-top:24px;font:12px Arial,sans-serif;letter-spacing:.08em;color:#d8c99f}
@@ -134,7 +134,10 @@ function refreshLocks(){
   const day=i+1, unlock=`2026-12-${String(day).padStart(2,"0")}`;
   const locked=now<unlock;
   b.classList.toggle("locked",locked);
-  b.disabled=locked;
+  // Не отключаем кнопку: на телефоне она должна реагировать на касание
+  // и показывать сообщение о дате открытия. Сам сюрприз защищён в openDoor().
+  b.disabled=false;
+  b.setAttribute("aria-label",locked?`День ${day}. Откроется ${day} декабря`: `Открыть день ${day}`);
   b.title=locked?`Откроется ${day} декабря`:`Открыть день ${day}`;
   if(!locked)b.classList.add("opened");
  });
@@ -194,4 +197,4 @@ function stopMusic(){
 document.getElementById("soundToggle").addEventListener("click",()=>{if(musicOn)stopMusic();else startMusic()});
 </script>
 </body>
-</html>
+</html>сс
