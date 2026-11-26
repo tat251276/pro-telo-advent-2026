@@ -1,3 +1,4 @@
+
 <!doctype html>
 <html lang="ru">
 <head>
@@ -13,13 +14,13 @@ body:before{content:"";position:fixed;inset:0;pointer-events:none;opacity:.22;ba
 main{position:relative;max-width:760px;margin:auto;padding:26px 16px 50px;text-align:center}
 .brand{letter-spacing:.22em;text-transform:uppercase;font:600 12px Arial,sans-serif;color:#e8d39b}
 h1{font-size:clamp(29px,7vw,48px);line-height:1.06;margin:14px 0 9px;color:#f9e9c2;font-weight:normal}
-.subtitle{font:14px/1.5 Arial,sans-serif;color:#e8e1cc;margin:0 auto 22px;max-width:470px}
+.subtitle{font:14px/1.5 Arial,sans-serif;color:#e8e1cc;margin:0 auto 22px;max-width:500px}
 .tree{position:relative;max-width:580px;margin:0 auto;padding:10px 10px 22px}
 .tree:before{content:"";position:absolute;z-index:-1;left:50%;top:22px;transform:translateX(-50%);width:min(92%,520px);height:92%;background:linear-gradient(135deg,#1c624d,#0e4437 65%,#092d25);clip-path:polygon(50% 0,62% 19%,57% 19%,75% 42%,67% 42%,91% 70%,61% 70%,61% 100%,39% 100%,39% 70%,9% 70%,33% 42%,25% 42%,43% 19%,38% 19%);filter:drop-shadow(0 8px 16px #061c18)}
 .star{font-size:38px;color:#f6d98e;text-shadow:0 0 18px #f5d98a;margin-bottom:2px}
 .rows{display:flex;flex-direction:column;align-items:center;gap:8px}
 .ornament-row{display:flex;justify-content:center;gap:clamp(7px,2vw,15px);width:100%}
-.ornament{position:relative;width:clamp(48px,11vw,70px);height:clamp(48px,11vw,70px);border:2px solid #d7b86f;border-radius:50%;background:radial-gradient(circle at 32% 25%,#6db08a 0,#247457 32%,#0d4938 72%);box-shadow:inset -5px -7px 12px #06271e, inset 3px 3px 8px #a8d2a2,0 5px 10px #061c18;display:flex;align-items:center;justify-content:center;color:#fff4d2;font:700 clamp(16px,4vw,22px) Arial,sans-serif;text-shadow:0 2px 4px #05261d;cursor:pointer;transition:transform .18s,filter .18s}
+.ornament{position:relative;width:clamp(48px,11vw,70px);height:clamp(48px,11vw,70px);border:2px solid #d7b86f;border-radius:50%;background:radial-gradient(circle at 32% 25%,#6db08a 0,#247457 32%,#0d4938 72%);box-shadow:inset -5px -7px 12px #06271e,inset 3px 3px 8px #a8d2a2,0 5px 10px #061c18;display:flex;align-items:center;justify-content:center;color:#fff4d2;font:700 clamp(16px,4vw,22px) Arial,sans-serif;text-shadow:0 2px 4px #05261d;cursor:pointer;transition:transform .18s,filter .18s}
 .ornament:before{content:"";position:absolute;width:14px;height:8px;border:2px solid #d9bb73;border-bottom:0;border-radius:5px 5px 0 0;top:-10px;left:50%;transform:translateX(-50%)}
 .ornament:after{content:"";position:absolute;width:8px;height:5px;background:linear-gradient(#f3dfa7,#b88c3e);top:-4px;left:50%;transform:translateX(-50%);border-radius:2px}
 .ornament:hover{transform:translateY(-3px) scale(1.04);filter:brightness(1.12)}
@@ -28,13 +29,21 @@ h1{font-size:clamp(29px,7vw,48px);line-height:1.06;margin:14px 0 9px;color:#f9e9
 .ornament.opened{background:radial-gradient(circle at 30% 25%,#fff0bd 0,#e4c36f 42%,#a8792c 100%);color:#4a3210;text-shadow:none;border-color:#ffebae;box-shadow:inset -5px -7px 12px #916321,inset 3px 3px 8px #fff8d9,0 5px 10px #061c18}
 .note{font:12px/1.5 Arial,sans-serif;color:#d8e5d9;margin:14px auto 0;max-width:500px}
 .footer{margin-top:24px;font:12px Arial,sans-serif;letter-spacing:.08em;color:#d8c99f}
-.modal{position:fixed;inset:0;z-index:5;background:#031b16d9;display:none;align-items:center;justify-content:center;padding:18px}
+.soundbar{display:flex;justify-content:center;align-items:center;gap:10px;margin:16px auto 0;font:12px Arial,sans-serif;color:#eadbb5}
+.soundbar button,.rulesbtn{border:1px solid #d8b66b;border-radius:999px;background:#174b3c;color:#fff1cc;padding:9px 14px;font:12px Arial,sans-serif;cursor:pointer}
+.rules{max-width:560px;margin:24px auto 0;padding:18px;border:1px solid #b9944e;border-radius:16px;background:#0d3329cc;text-align:left;font:13px/1.6 Arial,sans-serif;color:#f6ecd2}
+.rules h2{text-align:center;font:normal 22px Georgia,serif;color:#f9e9c2;margin:0 0 10px}
+.rules ul{padding-left:20px;margin:8px 0}
+.modal{position:fixed;inset:0;z-index:5;background:#031b16e8;display:none;align-items:center;justify-content:center;padding:18px;overflow:auto}
 .modal.show{display:flex}
-.dialog{width:min(100%,440px);background:linear-gradient(145deg,#fff8e8,#e9d9b4);color:#234237;border:2px solid #d3ad5d;border-radius:22px;padding:26px 22px;box-shadow:0 18px 55px #0009;position:relative}
+.dialog{width:min(100%,460px);max-height:90vh;overflow:auto;background:linear-gradient(145deg,#fff8e8,#e9d9b4);color:#234237;border:2px solid #d3ad5d;border-radius:22px;padding:26px 22px;box-shadow:0 18px 55px #0009;position:relative;text-align:center}
 .dialog .day{font:700 12px Arial,sans-serif;letter-spacing:.15em;color:#8b6828;text-transform:uppercase}
 .dialog h2{font-size:27px;font-weight:normal;margin:10px 0}
 .dialog p{font:15px/1.6 Arial,sans-serif;margin:0;white-space:pre-line}
+.dialog .disclaimer{font:11px/1.4 Arial,sans-serif;color:#76684b;margin-top:12px}
 .close{position:absolute;right:12px;top:10px;border:0;background:transparent;font-size:28px;color:#426356;cursor:pointer}
+@keyframes pop{0%{transform:scale(.7);opacity:.3}70%{transform:scale(1.08)}100%{transform:scale(1);opacity:1}}
+.dialog.animate{animation:pop .35s ease-out}
 @media(max-width:390px){main{padding-left:8px;padding-right:8px}.ornament-row{gap:6px}.ornament{width:46px;height:46px}}
 </style>
 </head>
@@ -47,43 +56,59 @@ h1{font-size:clamp(29px,7vw,48px);line-height:1.06;margin:14px 0 9px;color:#f9e9
     <div class="star" aria-hidden="true">✦</div>
     <div class="rows" id="ornaments"></div>
   </section>
-  <p class="note">Новая игрушка открывается каждый день с 1 по 24 декабря. Уже открытые сюрпризы остаются доступными.</p>
+  <p class="note">Новая игрушка открывается каждый день с 1 по 24 декабря по московскому времени. Уже открытые сюрпризы остаются доступными.</p>
+  <div class="soundbar"><button id="soundToggle" type="button">♫ Включить музыку</button><span id="soundState">Звук выключен</span></div>
+  <section class="rules">
+    <h2>Главный розыгрыш — 24 декабря</h2>
+    <p>Главный приз — сертификат студии «Про Тело» на бесплатный массаж номиналом 1 500 ₽.</p>
+    <ul>
+      <li>Выполни хотя бы одно задание календаря и отправь ответ в личные сообщения MAX до 20:00 в день задания — это 1 билет.</li>
+      <li>За каждого из двух приглашённых друзей, которые подпишутся на канал, — ещё по 1 билету.</li>
+      <li>Максимум — 3 билета на одного участника.</li>
+      <li>После выполнения задания напиши в личные сообщения MAX: «Участвую в главном розыгрыше».</li>
+      <li>На момент розыгрыша нужно оставаться подписчиком канала.</li>
+    </ul>
+    <p><b>Приём заявок — до 17:00, розыгрыш — в 19:00 по московскому времени 24 декабря 2026 года.</b></p>
+    <p>Сертификат на 1 500 ₽ можно использовать на любой массаж из меню студии стоимостью до 1 500 ₽. Если выбранная услуга дороже, победитель доплачивает разницу.</p>
+    <p>Срок действия скидок и дополнительных призов — 30 дней со дня получения, если для конкретного предложения не указано иное.</p>
+  </section>
   <div class="footer">МАССАЖ · SPA · ЗАБОТА О СЕБЕ</div>
 </main>
 <div class="modal" id="modal" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
-  <div class="dialog">
+  <div class="dialog" id="dialog">
     <button class="close" id="close" aria-label="Закрыть">×</button>
     <div class="day" id="modalDay"></div>
     <h2 id="modalTitle"></h2>
     <p id="modalText"></p>
+    <p class="disclaimer" id="modalDisclaimer" hidden>Изображение подарка носит иллюстративный характер.</p>
   </div>
 </div>
 <script>
 const surprises = [
- ["Добро пожаловать!","Начинаем наш декабрь заботы о себе. Сегодня просто выделите 10 минут для отдыха: отложите телефон, удобно устройтесь и спокойно подышите."],
- ["Пауза для шеи","Мягко опустите плечи, сделайте несколько спокойных поворотов головы в комфортной амплитуде. Не выполняйте движения через боль."],
- ["Время для воды","Сегодня напомните себе пить воду в течение дня. Маленькие привычки тоже помогают заботиться о себе."],
- ["Минутка для стоп","Снимите обувь, мягко разомните стопы руками или покатайте подошвой небольшой мячик без сильного давления."],
- ["Секрет расслабления","Попробуйте дыхание: спокойный вдох, затем чуть более длинный выдох. Повторите несколько раз без задержки дыхания."],
- ["Забота о спине","Если долго сидите, встаньте, пройдитесь и мягко потянитесь. Меняйте положение тела в течение рабочего дня."],
- ["Маленький ритуал","Выберите сегодня приятный домашний уход: тёплый душ, крем для тела и несколько минут только для себя."],
- ["Плечи отдыхают","Поднимите плечи к ушам, затем мягко отпустите вниз. Повторите 5 раз, не торопясь."],
- ["Вопрос дня","Какая зона тела чаще всего устаёт у вас в течение дня? Прислушайтесь к себе и не игнорируйте дискомфорт."],
- ["Тёплая забота","Устройте себе вечер без спешки. Комфортная температура, спокойная музыка и отдых — тоже важная часть ухода."],
- ["Разомнёмся","Сделайте небольшую прогулку в удобном темпе. Движение должно приносить комфорт, а не усиливать боль."],
- ["Подарок себе","Подумайте, какой способ заботы о себе вы давно откладывали. Возможно, сегодня самое время запланировать его."],
- ["Уход за руками","Нанесите крем на руки и уделите внимание каждому пальцу лёгкими массажными движениями."],
- ["Проверка осанки","Поставьте стопы на пол, расслабьте плечи и устройтесь удобно. Не нужно удерживать спину напряжённо."],
- ["Минутка тишины","Закройте глаза на минуту, расслабьте челюсть и плечи. Позвольте себе небольшую передышку."],
- ["Забота о лице","Нанесите привычное увлажняющее средство мягкими движениями, не растягивая кожу."],
- ["Потянитесь","Потянитесь вверх, насколько комфортно, затем опустите руки и расслабьтесь. Повторите несколько раз."],
- ["Тёплый вечер","Сегодня выберите спокойный вечерний ритуал восстановления: отдых, любимая музыка или книга."],
- ["Слушайте тело","Усталость — повод сделать паузу. Не сравнивайте свои ощущения с чужими и выбирайте комфортный темп."],
- ["Маленькая радость","Вспомните три вещи, за которые вы благодарны себе сегодня. Забота начинается с внимания к себе."],
- ["Подарок и внимание","Сегодня день приятных сюрпризов. Следите за сообщениями от «Про Тело» — здесь может появиться специальный подарок."],
- ["День восстановления","Постарайтесь сегодня лечь спать вовремя и дать себе возможность полноценно отдохнуть."],
- ["Почти праздник","Вы уже прошли большую часть нашего календаря. Поблагодарите себя за то, что находили время для заботы."],
- ["Главный сюрприз","Сегодня финал нашего адвент-календаря! Спасибо, что были с «Про Тело». Следите за объявлением главного приза в канале."]
+ ["Добро пожаловать!","Начинаем наш декабрь заботы о себе! Сегодня задание простое: выдели 10 минут для отдыха. Отложи телефон, удобно устройся и спокойно подыши.\n\nХочешь участвовать в главном розыгрыше? Отправь ответ на задание в личные сообщения MAX до 20:00 по московскому времени."],
+ ["Викторина о спине","Небольшая проверка: что полезнее при долгой работе сидя?\nА) Совсем не менять положение.\nБ) Периодически вставать, немного ходить и менять положение тела.\n\nНапиши свой ответ в личные сообщения MAX до 20:00 по московскому времени. Это задание даёт билет в главный розыгрыш."],
+ ["Время для воды","Сегодня напомни себе пить воду в течение дня. Маленькие привычки тоже помогают заботиться о себе.\n\nНапиши в личные сообщения MAX: какая привычка заботы о себе тебе даётся легче всего? Ответ до 20:00 по московскому времени."],
+ ["Минутка для стоп","Сними обувь, мягко разомни стопы руками или покатай подошвой небольшой мячик без сильного давления.\n\nЕсли выполнишь задание, поделись впечатлением в личных сообщениях MAX до 20:00."],
+ ["День по «5» — экспресс-массаж","Только сегодня можно приобрести экспресс-массаж 30 минут за 500 ₽ вместо 800 ₽. Всего 5 мест!\n\nДля кого: кто хочет попробовать массаж впервые, у кого мало времени или пока нет возможности приобрести полноценный массаж.\n\nУсловия предложения: поставь 5 сердечек под последними 5 постами канала и напиши в личные сообщения MAX: «Хочу массаж за 500». Дождись подтверждения свободного места. Приобрести предложение можно только 5 декабря."],
+ ["Забота о спине","Если долго сидишь, встань, немного пройдись и мягко потянись. Меняй положение тела в течение рабочего дня. Двигайся только в комфортной амплитуде.\n\nСегодня можно просто выполнить практику и уделить себе несколько минут."],
+ ["Маленький ритуал","Выбери сегодня приятный домашний уход: тёплый душ, крем для тела и несколько минут только для себя.\n\nНапиши в личные сообщения MAX, какой домашний ритуал помогает тебе расслабиться. Ответ до 20:00 по московскому времени. Это задание даёт билет в главный розыгрыш."],
+ ["Подарок — ароматная свеча","Сегодня среди участников задания разыгрывается ароматическая свеча!\n\nЧтобы участвовать в розыгрыше подарка, отправь в личные сообщения MAX ответ: какой аромат у тебя ассоциируется с уютом? Ответ принимается до 20:00 по московскому времени. Победитель будет объявлен в канале на следующий день.","gift"],
+ ["Вопрос дня","Какая зона тела чаще всего устаёт у тебя в течение дня? Прислушайся к себе и не игнорируй дискомфорт.\n\nПоделись ответом в личных сообщениях MAX до 20:00 по московскому времени."],
+ ["Тёплая забота","Устрой себе вечер без спешки. Комфортная температура, спокойная музыка и отдых — тоже важная часть ухода.\n\nСегодня задание — выделить время для спокойного вечера."],
+ ["Угадай процедуру","Загадка: эта процедура помогает проработать мышцы лица и уделить внимание овалу лица. Что это за массаж?\n\nНапиши ответ в личные сообщения MAX до 20:00 по московскому времени. Это задание даёт билет в главный розыгрыш."],
+ ["SPA-пауза","Сегодня выбери один приятный этап домашнего ухода: мягкое очищение, увлажнение или расслабляющую ванну, если она тебе подходит.\n\nРасскажи в личных сообщениях MAX, какой SPA-ритуал ты любишь больше всего. Ответ до 20:00."],
+ ["Уход за руками","Нанеси крем на руки и удели внимание каждому пальцу лёгкими массажными движениями.\n\nМаленькая забота тоже имеет значение. Сегодня можно просто выполнить этот ритуал для себя."],
+ ["Проверка осанки","Поставь стопы на пол, расслабь плечи и устройся удобно. Не нужно удерживать спину напряжённо.\n\nВопрос: почему важно менять положение тела, если долго сидишь? Напиши ответ в личные сообщения MAX до 20:00. Это задание даёт билет в главный розыгрыш."],
+ ["Минутка тишины","Закрой глаза на минуту, расслабь челюсть и плечи. Позволь себе небольшую передышку.\n\nСегодня задание — подарить себе минуту тишины."],
+ ["Специальное предложение от «Про Тело»","Только сегодня можно приобрести курс из 5 массажей за 5 000 ₽ вместо 7 500 ₽. Экономия — 2 500 ₽.\n\nУсловие приобретения: 100% предоплата. Предложение действует только 16 декабря."],
+ ["Спроси мастера","Есть вопрос о массаже, SPA, депиляции или уходе за лицом? Сегодня отправь его в личные сообщения MAX. Я отвечу и помогу сориентироваться.\n\nЭто задание даёт билет в главный розыгрыш. Ответ отправить до 20:00 по московскому времени."],
+ ["Потянитесь","Потянись вверх, насколько комфортно, затем опусти руки и расслабься. Повтори несколько раз без усилия.\n\nНе выполняй движения через боль. Сегодня можно просто уделить себе пару минут."],
+ ["Подарок — мини-SPA-набор","Сегодня разыгрываем мини-SPA-набор: соль для ванны и ароматное мыло!\n\nЧтобы участвовать в розыгрыше подарка, напиши в личные сообщения MAX, какой домашний SPA-ритуал ты выбрала бы для зимнего вечера. Ответ до 20:00 по московскому времени. Победитель будет объявлен в канале на следующий день.","gift"],
+ ["Маленькая радость","Вспомни три вещи, за которые ты благодарна себе сегодня. Забота начинается с внимания к себе.\n\nНапиши одну из них в личные сообщения MAX до 20:00 по московскому времени."],
+ ["Благодарность себе","Сегодня завершаем задания календаря. Напиши, за что ты хочешь поблагодарить себя в этом году.\n\nОтправь ответ в личные сообщения MAX до 20:00 по московскому времени. Это задание даёт билет в главный розыгрыш."],
+ ["День восстановления","Постарайся сегодня лечь спать вовремя и дать себе возможность полноценно отдохнуть.\n\nПусть сегодня забота о себе будет простой и спокойной."],
+ ["Почти праздник","Завтра финал нашего адвент-календаря! Спасибо, что находишь время для себя и остаёшься с «Про Тело».\n\nНапоминаем: заявки на главный розыгрыш принимаются до 17:00 по московскому времени 24 декабря."],
+ ["Главный сюрприз","Сегодня финал нашего адвент-календаря! Спасибо, что были с «Про Тело».\n\nГлавный розыгрыш состоится сегодня в 19:00 по московскому времени. Приём заявок завершён в 17:00. Главный приз — сертификат студии на бесплатный массаж номиналом 1 500 ₽.\n\nПобедителя объявим в канале!"]
 ];
 const rows = [2,4,5,6,7];
 const container = document.getElementById("ornaments");
@@ -103,21 +128,70 @@ function moscowDate(){
  const v={}; parts.forEach(p=>v[p.type]=p.value);
  return `${v.year}-${v.month}-${v.day}`;
 }
+function refreshLocks(){
+ const now=moscowDate();
+ document.querySelectorAll(".ornament").forEach((b,i)=>{
+  const day=i+1, unlock=`2026-12-${String(day).padStart(2,"0")}`;
+  const locked=now<unlock;
+  b.classList.toggle("locked",locked);
+  b.disabled=locked;
+  b.title=locked?`Откроется ${day} декабря`:`Открыть день ${day}`;
+  if(!locked)b.classList.add("opened");
+ });
+}
 function openDoor(day){
  const now=moscowDate();
  const unlock=`2026-12-${String(day).padStart(2,"0")}`;
-if(false && now<unlock){
+ if(now<unlock){
   alert(`Эта игрушка откроется ${day} декабря. Возвращайтесь за сюрпризом!`);
   return;
  }
+ playChime();
  document.getElementById("modalDay").textContent=`День ${day} · декабрь`;
  document.getElementById("modalTitle").textContent=surprises[day-1][0];
  document.getElementById("modalText").textContent=surprises[day-1][1];
+ document.getElementById("modalDisclaimer").hidden=surprises[day-1][2]!=="gift";
+ const dialog=document.getElementById("dialog");
+ dialog.classList.remove("animate"); void dialog.offsetWidth; dialog.classList.add("animate");
  document.getElementById("modal").classList.add("show");
 }
-document.getElementById("close").addEventListener("click",()=>document.getElementById("modal").classList.remove("show"));
-document.getElementById("modal").addEventListener("click",e=>{if(e.target.id==="modal")e.currentTarget.classList.remove("show")});
-document.addEventListener("keydown",e=>{if(e.key==="Escape")document.getElementById("modal").classList.remove("show")});
+function closeModal(){document.getElementById("modal").classList.remove("show")}
+document.getElementById("close").addEventListener("click",closeModal);
+document.getElementById("modal").addEventListener("click",e=>{if(e.target.id==="modal")closeModal()});
+document.addEventListener("keydown",e=>{if(e.key==="Escape")closeModal()});
+refreshLocks();
+setInterval(refreshLocks,60000);
+
+let audioCtx=null, musicTimer=null, musicOn=false, noteIndex=0;
+const melody=[523.25,659.25,783.99,659.25,587.33,698.46,880,698.46];
+function tone(freq,duration,volume,type="sine"){
+ if(!audioCtx)return;
+ const osc=audioCtx.createOscillator(), gain=audioCtx.createGain();
+ osc.type=type; osc.frequency.value=freq; gain.gain.setValueAtTime(.0001,audioCtx.currentTime);
+ gain.gain.exponentialRampToValueAtTime(volume,audioCtx.currentTime+.04);
+ gain.gain.exponentialRampToValueAtTime(.0001,audioCtx.currentTime+duration);
+ osc.connect(gain);gain.connect(audioCtx.destination);osc.start();osc.stop(audioCtx.currentTime+duration+.03);
+}
+function playChime(){
+ try{
+  if(!audioCtx)audioCtx=new (window.AudioContext||window.webkitAudioContext)();
+  if(audioCtx.state==="suspended")audioCtx.resume();
+  tone(880,.42,.10,"sine");setTimeout(()=>tone(1174.66,.5,.07,"sine"),90);
+ }catch(e){}
+}
+function startMusic(){
+ if(!audioCtx)audioCtx=new (window.AudioContext||window.webkitAudioContext)();
+ audioCtx.resume();musicOn=true;
+ musicTimer=setInterval(()=>{tone(melody[noteIndex%melody.length],.65,.018,"sine");noteIndex++},720);
+ document.getElementById("soundToggle").textContent="♫ Выключить музыку";
+ document.getElementById("soundState").textContent="Музыка включена";
+}
+function stopMusic(){
+ if(musicTimer)clearInterval(musicTimer);musicTimer=null;musicOn=false;
+ document.getElementById("soundToggle").textContent="♫ Включить музыку";
+ document.getElementById("soundState").textContent="Звук выключен";
+}
+document.getElementById("soundToggle").addEventListener("click",()=>{if(musicOn)stopMusic();else startMusic()});
 </script>
 </body>
 </html>
