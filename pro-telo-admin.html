@@ -28,3 +28,4 @@ document.getElementById('sound').onclick=()=>{soundOn=!soundOn;document.getEleme
 document.getElementById('music').onclick=()=>{if(!musicOn){musicOn=true;document.getElementById('music').textContent='♫ Выключить музыку';playTune()}else{musicOn=false;clearTimeout(musicTimer);document.getElementById('music').textContent='♫ Включить музыку'}};
 function playTune(){if(!musicOn)return;[523,659,784,659,587,698,880,698].forEach((f,i)=>setTimeout(()=>{if(musicOn)tone(f,.22)},i*270));musicTimer=setTimeout(playTune,2300)}
 </script></body></html>
+
